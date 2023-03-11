@@ -20,6 +20,13 @@ public class MyBinaryTree<K extends Comparable<K>>  {
     public void add(K key) {
         this.root = this.addRecursively(root, key);
     }
+    private int getSizeRecursively(MyBinaryNode<K> current) {
+        return current == null? 0: 1 + this.getSizeRecursively(current.left)+this.getSizeRecursively(current.right);
+    }
+
+    public int getSize() {
+        return this.getSizeRecursively(root);
+    }
 
     public void printBinaryTree() {
         System.out.println("My Tree: " + root);
